@@ -5,4 +5,6 @@ module.exports = (app) => {
 
     app.route('/')
         .get(controller.index);
+    app.route('/:id')
+        .get(controller.getAnggotaById);
 }
