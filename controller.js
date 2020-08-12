@@ -4,5 +4,11 @@ const respone = require('./res');
 const connection = require('./koneksi');
 
 exports.index = (req, res) => {
-    respone.ok('Aplikasi rest api berjalan');
+    connection.query('SELECT * FROM clan486', (error, rows, field) => {
+        if (error) {
+            connection.log(error);
+        } else {
+            respone.ok(rows, res);
+        }
+    });
 }

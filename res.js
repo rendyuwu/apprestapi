@@ -8,5 +8,4 @@ exports.ok = (values, res) => {
 
     res.json(data);
     res.end();
-
 }
