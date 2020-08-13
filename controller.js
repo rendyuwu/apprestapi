@@ -61,7 +61,34 @@ exports.addAnggotaUkm = (req, res) => {
             if (error) {
                 respone.err(error, data, 403, res);
             } else {
-                respone.ok('Berhasil menampilkan data', data, res, ukm);
+                respone.ok('Berhasil menambahkan data', data, res, ukm);
+            }
+        });
+    }
+}
+
+// merubah data anggota ukm
+exports.updateAnggotaUkmById = (req, res) => {
+    const ukm = req.params.ukm;
+
+    const data = {
+        id: req.body.id,
+        nim: req.body.nim,
+        nama: req.body.nama,
+        jurusan: req.body.jurusan,
+        jabatan: req.body.jabatan,
+        telp: req.body.telp,
+        email: req.body.email
+    };
+
+    if (data.nim.length < 1 || data.nama.length < 1 || data.jurusan.length < 1 || data.jabatan.length < 1 || data.telp.length < 1 || data.email.length < 1) {
+        respone.err('Gagal merubah anggota!', data, 403, res);
+    } else {
+        connection.query(`UPDATE ${ukm} SET nim = ?, nama = ?, jurusan = ?, jabatan = ?, telp = ?, email = ? WHERE id = ?`, [data.nim, data.nama, data.jurusan, data.jabatan, data.telp, data.email, data.id], (error, rows) => {
+            if (error) {
+                respone.err(error, data, 403, res);
+            } else {
+                respone.ok('Berhasil merubah data', data, res, ukm);
             }
         });
     }

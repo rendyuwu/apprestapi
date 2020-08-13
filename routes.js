@@ -10,9 +10,10 @@ module.exports = (app) => {
     // route crud ukm
     app.route('/:ukm')
         .get(controller.getAnggotaUkm)
-        .post(controller.addAnggotaUkm);
+        .post(controller.addAnggotaUkm)
+        .put(controller.updateAnggotaUkmById);
 
-    // route detail anggota by id
+    // route detail & update anggota by id
     app.route('/:ukm/:id')
         .get(controller.getAnggotaUkmById);
 }
