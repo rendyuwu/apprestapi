@@ -11,7 +11,8 @@ module.exports = (app) => {
     app.route('/:ukm')
         .get(controller.getAnggotaUkm)
         .post(controller.addAnggotaUkm)
-        .put(controller.updateAnggotaUkmById);
+        .put(controller.updateAnggotaUkmById)
+        .delete(controller.deleteAnggotaUkmById);
 
     // route detail & update anggota by id
     app.route('/:ukm/:id')

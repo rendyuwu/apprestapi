@@ -93,3 +93,17 @@ exports.updateAnggotaUkmById = (req, res) => {
         });
     }
 }
+
+// menghapus data anggota ukm
+exports.deleteAnggotaUkmById = (req, res) => {
+    const ukm = req.params.ukm;
+    const id = req.body.id;
+
+    connection.query(`DELETE FROM ${ukm} WHERE id = ?`, [id], (error, rows, fields) => {
+        if (error) {
+            respone.err(`Gagal menghapus data anggota ${ukm}!`, {}, 403, res);
+        } else {
+            respone.ok(`Berhasil menghapus data anggota ${ukm}`, rows, res, ukm);
+        }
+    });
+}
